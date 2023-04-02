@@ -43,9 +43,13 @@ void mat_multv (int m, int n, double** A, double* v, double* w){
 
 void mat_multm (int m, int n, int q, double** A, double** B, double** C){
 
-    for (int i = 0; i < m; i++){
-        for (int j = 0, k = 0; k < n && j < n; j++, k++){
-            C[i][k] += A[i][j]*B[j][k];
+    for (int k = 0; k < q; k++){
+        for (int i = 0; i < m; i++){
+            C[k][i] = 0.0;
+            for (int j = 0; j < n; j++){
+                C[k][i] += A[k][j] * B[j][i];
+            }
+            
         }
     }
 }
@@ -54,7 +58,7 @@ void mat_imprime(int m, int n, double** A){
     
     for (int i = 0; i < m; i++){
         for (int j = 0; j < n; j++){
-            printf("%g\t", A[i][j]);
+            printf("%.16g\t", A[i][j]);
         }
         printf("\n");
     }

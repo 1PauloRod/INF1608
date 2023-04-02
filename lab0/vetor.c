@@ -50,8 +50,10 @@ void vet_mults (int n, double* v, double s, double* w){
 
 void vet_imprime(int n, double* v){
 
+    printf("( ");
     for (int i = 0; i < n; i++){
-        printf("%g\t", v[i]);
+        printf("%g ", v[i]);
     }
+    printf(")");
     printf("\n");
 }
